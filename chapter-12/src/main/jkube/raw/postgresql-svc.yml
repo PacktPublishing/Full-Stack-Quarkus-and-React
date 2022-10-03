@@ -1,0 +1,14 @@
+metadata:
+  labels:
+    app: ${postgresql.serviceName}
+    group: ${project.artifactId}
+  name: ${postgresql.serviceName}
+spec:
+  ports:
+    - name: postgresql
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    app: ${postgresql.serviceName}
+    group: ${project.artifactId}
