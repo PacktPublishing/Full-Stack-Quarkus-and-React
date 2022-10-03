@@ -1,0 +1,54 @@
+metadata:
+  labels:
+    app: ${postgresql.serviceName}
+    group: ${project.artifactId}
+  name: ${postgresql.serviceName}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${postgresql.serviceName}
+      group: ${project.artifactId}
+  template:
+    metadata:
+      labels:
+        app: ${postgresql.serviceName}
+        group: ${project.artifactId}
+    spec:
+      containers:
+        - name: ${postgresql.serviceName}
+          image: postgres:14.2-alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ${postgresql.serviceName}
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${postgresql.serviceName}
+                  key: password
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - pg_isready -U ${POSTGRES_USER}
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            successThreshold: 1
+            timeoutSeconds: 1
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: ${postgresql.serviceName}
+
+

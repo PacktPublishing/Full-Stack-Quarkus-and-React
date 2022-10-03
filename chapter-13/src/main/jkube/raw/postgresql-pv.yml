@@ -1,0 +1,13 @@
+metadata:
+  labels:
+    app: ${postgresql.serviceName}
+    group: ${project.artifactId}
+  name: ${postgresql.serviceName}
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 256M
+  hostPath:
+    path: /data/postgresql
