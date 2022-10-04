@@ -1,0 +1,20 @@
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            - name: QUARKUS_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ${postgresql.serviceName}
+                  key: username
+            - name: QUARKUS_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${postgresql.serviceName}
+                  key: password
+            - name: QUARKUS_DATASOURCE_REACTIVE_URL
+              value: postgresql://${postgresql.serviceName}:5432/postgres
+            - name: QUARKUS_HIBERNATE_ORM_DATABASE_GENERATION
+              value: create
+          imagePullPolicy: Always
