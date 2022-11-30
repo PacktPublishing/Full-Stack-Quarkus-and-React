@@ -56,3 +56,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Author
 **Marc** started his career as a freelance web application developer, creating and maintaining software for the transportation/courier industry. A few years ago Marc started working as an employee for different companies where he has helped build scalable web applications for different industries (retail, procurement software, e-commerce, etc.). He is now a professional Open Source developer focused on the creation and maintenance of developer tools for Java developers and Kubernetes.	
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800562738">https://packt.link/free-ebook/9781800562738 </a> </p>
